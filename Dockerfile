@@ -6,7 +6,7 @@ WORKDIR /src
 RUN go get github.com/mitchellh/gox
 RUN gox -ldflags "-s -w" -osarch linux/386 -output "kubeletctl"
 
-FROM alpine:latest
+FROM alpine:3.15.4
 COPY --from=builder /src/kubeletctl /app/
 WORKDIR /app
 
